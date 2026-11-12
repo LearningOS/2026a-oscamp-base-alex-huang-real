@@ -2,7 +2,7 @@
   "schema": 1,
   "courseId": 2074,
   "repository": "LearningOS/2026a-oscamp-base-alex-huang-real",
-  "commit": "1cce94792a9a4efb8e2f811f155ccd1aca7c701c",
+  "commit": "f48307127ea5cdce8adcc7207a3920c8f1a60953",
   "score": 0,
   "totalScore": 100,
   "exercises": [
@@ -176,9 +176,9 @@
     }
   ],
   "student": "alex-huang-real",
-  "runId": "43206640907",
+  "runId": "43270269909",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
