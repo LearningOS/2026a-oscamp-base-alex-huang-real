@@ -165,7 +165,6 @@ pub fn double_in_thread(numbers: Vec<i32>) -> Vec<i32> {
         }).collect();
         double_num
     }).join().unwrap()
-    // todo!()
 }
 
 /// Sum two vectors in parallel, returning a tuple of two sums.
@@ -201,7 +200,10 @@ pub fn named_sleeper(value: i32, ms: u64) -> i32 {
     // TODO: Create a thread builder with name "sleeper"
     // TODO: Spawn a thread that sleeps for `ms` milliseconds and returns `value`
     // TODO: Join the thread and return the value
-    todo!()
+    thread::Builder::new().name("sleeper".to_string()).spawn(move ||{
+        thread::sleep(Duration::from_millis(ms));
+        return value
+    }).unwrap().join().unwrap()
 }
 
 thread_local! {
@@ -216,7 +218,12 @@ thread_local! {
 /// Hint: Use `THREAD_COUNT.with(|cell| { ... })` to access the thread‑local variable.
 pub fn increment_thread_local() -> usize {
     // TODO: Use THREAD_COUNT.with to increment and return the new count
-    todo!()
+    THREAD_COUNT.with(|cell| {
+        println!("before cell:{}", *cell.borrow());
+        *cell.borrow_mut() += 1;
+        println!("after cell:{}", *cell.borrow());
+        *cell.borrow()
+    })
 }
 
 /// Spawn two threads using a **scoped thread** to compute the sum of two slices without moving ownership.
