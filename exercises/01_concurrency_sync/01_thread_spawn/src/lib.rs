@@ -157,7 +157,15 @@ pub fn double_in_thread(numbers: Vec<i32>) -> Vec<i32> {
     // TODO: Create a new thread to multiply each element of numbers by 2
     // Use thread::spawn and move closure
     // Use join().unwrap() to get result
-    todo!()
+
+    thread::spawn(move || {
+        let double_num : Vec<i32> = numbers.iter().map(|x| {
+            let y = x * 2;
+            y
+        }).collect();
+        double_num
+    }).join().unwrap()
+    // todo!()
 }
 
 /// Sum two vectors in parallel, returning a tuple of two sums.
@@ -167,7 +175,15 @@ pub fn double_in_thread(numbers: Vec<i32>) -> Vec<i32> {
 pub fn parallel_sum(a: Vec<i32>, b: Vec<i32>) -> (i32, i32) {
     // TODO: Create two threads to sum a and b respectively
     // Join both threads to get results
-    todo!()
+    let thread_join1 =  thread::spawn(move || {
+        let res: i32 = a.iter().sum();
+        res
+    });
+    let thread_join2 =  thread::spawn(move || {
+        let res: i32 = b.iter().sum();
+        res
+    });
+    (thread_join1.join().unwrap(), thread_join2.join().unwrap())
 }
 
 // ============================================================================
