@@ -2,16 +2,16 @@
   "schema": 1,
   "courseId": 2074,
   "repository": "LearningOS/2026a-oscamp-base-alex-huang-real",
-  "commit": "f48307127ea5cdce8adcc7207a3920c8f1a60953",
-  "score": 0,
+  "commit": "5cb40cb6e5213b9e64f858f4bf49b9fd857a45c0",
+  "score": 3,
   "totalScore": 100,
   "exercises": [
     {
       "name": "thread_spawn",
       "max": 3,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 101
+      "score": 3,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "mutex_counter",
@@ -176,9 +176,9 @@
     }
   ],
   "student": "alex-huang-real",
-  "runId": "43270269909",
+  "runId": "43724402207",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
