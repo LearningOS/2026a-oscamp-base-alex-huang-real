@@ -239,7 +239,16 @@ pub fn scoped_slice_sum(a: &[i32], b: &[i32]) -> (i32, i32) {
     // TODO: Use thread::scope to spawn two threads
     // TODO: Each thread sums its slice
     // TODO: Wait for both threads and return the results
-    todo!()
+    let mut ans : (i32, i32) = (0,0);
+    thread::scope(|s|{
+        s.spawn( || {
+            ans.0 = a.iter().sum();
+        });
+        s.spawn(|| {
+            ans.1 = b.iter().sum();
+        });
+    });
+    ans
 }
 
 /// Handle a possible panic in a spawned thread.
@@ -256,7 +265,16 @@ pub fn scoped_slice_sum(a: &[i32], b: &[i32]) -> (i32, i32) {
 pub fn handle_panic(value: i32, should_panic: bool) -> Result<i32, ()> {
     // TODO: Spawn a thread that either panics or returns value
     // TODO: Join and map the result appropriately
-    todo!()
+    thread::spawn( move||  {
+        if should_panic {
+            panic!();
+        }
+        return value
+    }).join().map_err(|e| {
+        return ()
+    }).map(|t| {
+        return t;
+    })
 }
 
 #[cfg(test)]
