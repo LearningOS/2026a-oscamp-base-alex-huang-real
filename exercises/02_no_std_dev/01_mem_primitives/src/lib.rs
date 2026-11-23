@@ -27,7 +27,16 @@
 pub unsafe extern "C" fn my_memcpy(dst: *mut u8, src: *const u8, n: usize) -> *mut u8 {
     // TODO: Implement memcpy
     // Hint: read bytes from src one by one and write to dst
-    todo!()
+    let mut dst = dst;
+    let mut src = src;
+    for i in 0..n {
+        unsafe {
+            *(dst) = *src;
+            dst = dst.add(1);
+            src = src.add(1);
+        }
+    }
+    dst.sub(n)
 }
 
 /// Set `n` bytes starting at `dst` to the value `c`.
@@ -39,7 +48,12 @@ pub unsafe extern "C" fn my_memcpy(dst: *mut u8, src: *const u8, n: usize) -> *m
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn my_memset(dst: *mut u8, c: u8, n: usize) -> *mut u8 {
     // TODO: Implement memset
-    todo!()
+    let mut dst = dst;
+    for _ in 0..n {
+        *dst = c;
+        dst = dst.add(1);
+    }
+    dst.sub(n)
 }
 
 /// Copy `n` bytes from `src` to `dst`, correctly handling overlapping memory.
@@ -62,7 +76,17 @@ pub unsafe extern "C" fn my_memmove(dst: *mut u8, src: *const u8, n: usize) -> *
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn my_strlen(s: *const u8) -> usize {
     // TODO: Implement strlen
-    todo!()
+    let mut s  = s;
+    let mut len :usize = 0;
+    while let c = *s {
+        if c == 0{
+            break
+        } else {
+            len+=1;
+            s = s.add(1)
+        }
+    }
+    len
 }
 
 /// Compare two null-terminated byte strings.
@@ -77,7 +101,33 @@ pub unsafe extern "C" fn my_strlen(s: *const u8) -> usize {
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn my_strcmp(s1: *const u8, s2: *const u8) -> i32 {
     // TODO: Implement strcmp
-    todo!()
+    let (mut s1,mut s2):(*const u8, *const u8) = (s1,s2);
+    loop {
+        let c1 = *s1;
+        let c2 = *s2;
+        if c1 == c2 {
+            if c1 == 0 {
+                return 0
+            } else {
+                s1 = s1.add(1);
+                s2 = s2.add(1);
+                continue
+            }
+        } else {
+            return if c1 == 0 {
+                -1
+            } else if c2 == 0 {
+                1
+            } else {
+                if s1 > s2 {
+                    1
+                } else {
+                    -1
+                }
+            }
+        }
+
+    }
 }
 
 // ============================================================
