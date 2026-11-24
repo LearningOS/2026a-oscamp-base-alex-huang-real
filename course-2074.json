@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2074,
   "repository": "LearningOS/2026a-oscamp-base-alex-huang-real",
-  "commit": "c6a9318adf901230423b6ce8270f423717112257",
-  "score": 15,
+  "commit": "c7e8c9351147250e1d964b23a9d1496c41570802",
+  "score": 20,
   "totalScore": 100,
   "exercises": [
     {
@@ -44,9 +44,9 @@
     {
       "name": "bump_allocator",
       "max": 5,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 101
+      "score": 5,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "free_list_allocator",
@@ -176,9 +176,9 @@
     }
   ],
   "student": "alex-huang-real",
-  "runId": "45226987881",
+  "runId": "45448432942",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
